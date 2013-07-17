@@ -327,11 +327,14 @@ var scaffolt = module.exports = function(type, name, options, callback) {
   var generatorsPath = options.generatorsPath;
   var revert = options.revert;
   var parentPath = options.parentPath;
+  var fields = options.fields;
+  var id = options.id;
+  var apiURL = options.apiURL;
 
   if (pluralName == null) pluralName = inflection.pluralize(name);
   if (generatorsPath == null) generatorsPath = 'generators';
   if (revert == null) revert = false;
-  var templateData = {name: name, pluralName: pluralName};
+  var templateData = {name: name, pluralName: pluralName, fields:fields, id:id, apiURL:apiURL};
 
   checkIfExists(generatorsPath, function(exists) {
     exports.generateFiles(revert, generatorsPath, type, templateData, parentPath, function(error) {
