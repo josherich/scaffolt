@@ -11,7 +11,11 @@ program
   .option('-r, --revert', 'should scaffolt revert changes done by previous scaffolding?')
   .option('-g, --generators [path]', 'path to directory which contains generators specifications [./generators]')
   .option('-l, --list', 'list availables generators')
-  .option('-d, --doc [type]', 'display generator documentation');
+  .option('-d, --doc [type]', 'display generator documentation')
+  
+  .option('-f, --fields <fields>', 'list of fields', list)
+  .option('-i, --idAttribute [id]', 'ID attribute')
+  .option('-a, --apiURL [url]', 'api root url');
 
 program.on('--help', function() {
   console.log('  Examples:');
@@ -65,5 +69,8 @@ if (program.list) {
     parentPath: program.path,
     generatorsPath: program.generators,
     revert: program.revert,
+    fields: program.fields,
+    id: program.idAttribute,
+    apiURL: program.apiURL
   });
 }
